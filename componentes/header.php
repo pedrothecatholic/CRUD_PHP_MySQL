@@ -16,31 +16,41 @@
 
 <body>
 
-    <nav class="navbar navbar-dark bg-primary">
-        <a class="navbar-brand" href="">
-            Cadastro
-        </a>
+    <?php
+    if (isset($_SESSION["usuarioId"])) {
+    ?>
 
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="../cadastro">Cadastrar</a>
-            </li>
+        <nav class="navbar navbar-dark bg-primary">
+            <a class="navbar-brand" href="">
+                Cadastro
+            </a>
 
-        </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../cadastro">Cadastrar</a>
+                </li>
 
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="../listagem">Listar</a>
-            </li>
+            </ul>
 
-        </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../listagem">Listar</a>
+                </li>
 
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="../login/">Sair</a>
-            </li>
+            </ul>
 
-        </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <form method="POST" action="../processa_login.php">
+                        <input type="hidden" name="acoes" value="logout" />
+                        <button class="btn btn-danger" type="submit">Sair</button>
+                    </form>
+
+            </ul>
 
 
-    </nav>
+        </nav>
+
+    <?php
+    }
+    ?>

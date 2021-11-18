@@ -1,35 +1,43 @@
 <?php
-    include('../componentes/header.php');
+
+session_start();
+
+if (isset($_SESSION["usuarioId"])) {
+    header("location: ../listagem/index.php");
+}
+
+include('../componentes/header.php');
 ?>
 
-    <div class="container-geral">
-    
-        <div class="container-form">
-    
-                <form action="processa_login.php" method="POST">
-                    
-                    <div class="form-group">
-                        <label for="txt_usuario">USUÁRIO</label>
-                        <input type="text" class="form-control" name="txt_usuario" id="txt_usuario">
-                    </div>
+<div class="container-geral">
 
-                    <div class="form-group">
-                        <label for="txt_senha">SENHA</label>
-                        <input type="password" class="form-control" name="txt_senha" id="txt_senha">
-                    </div>
+    <div class="container-form">
 
-                    <div class="form-group">
-                      <button class="btn btn-primary" type="submit">LOGAR</button>
-                    </div>
+        <form action="../processa_login.php" method="POST">
+            <input type="hidden" name="acoes" value="login">
 
-                </form>
-
+            <div class="form-group">
+                <label for="txt_usuario">USUÁRIO</label>
+                <input type="text" class="form-control" name="txt_usuario" id="txt_usuario" required>
             </div>
 
-        </div>
+            <div class="form-group">
+                <label for="txt_senha">SENHA</label>
+                <input type="password" class="form-control" name="txt_senha" id="txt_senha" required>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">LOGAR</button>
+            </div>
+
+        </form>
 
     </div>
 
+</div>
+
+</div>
+
 <?php
-    include('../componentes/footer.php');
+include('../componentes/footer.php');
 ?>
